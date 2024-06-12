@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inline and Block Element</title>
+    <style>
+      .main-div {
+        width: 100%;
+        height: 100vh;
+        background-color: #72ca1a;
+        position: relative;
+      }
+      .secondary-div {
+        width: 100px;
+        height: 100px;
+        background-color: #b31414;
+        position: absolute;
+        /* center */
+          right: 50%;
+          bottom: 90%;
+          transform: translate(50%, 50%);
+       
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+      <div class="secondary-div"></div>
+    </div>
+  </body>
+</html>

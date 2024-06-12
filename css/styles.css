@@ -1,0 +1,115 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1em 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 1em;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 2em;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main grid styles */
+main {
+    max-width: 1100px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5em;
+}
+
+/* Card styles */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h2 {
+    padding: 1em;
+    font-size: 1.25em;
+    background: #f8f8f8;
+    margin: 0;
+}
+
+.card p {
+    padding: 1em;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.card a {
+    display: block;
+    padding: 1em;
+    text-align: center;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-top: 1px solid #eee;
+}
+
+.card a:hover {
+    background: #555;
+}
+
+/* Footer styles */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 2em;
+}

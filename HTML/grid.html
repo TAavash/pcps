@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid Layout Example</title>
+    <style>
+        /* Define the grid container with columns and rows */
+        .grid-container {
+            display: grid;
+             grid-template-columns: 1fr 2fr; /*Two columns: 1/3 and 2/3 */
+              grid-template-rows: auto 2fr auto; /*Three rows: auto height for header/footer, flexible middle row */
+             gap: 10px;  /*Add spacing between grid items */
+            padding: 10px;
+            background-color: #e0e0e0; /* Light gray background for grid container */
+            border: 2px solid #ccc; /* Light border around grid container */
+            border-radius: 10px; /* Rounded corners for grid container */
+        }
+
+        /* Style each grid item */
+        .header,
+        .sidebar,
+        .content,
+        .footer {
+            padding: 20px;
+            border-radius: 5px; /* Rounded corners for each grid item */
+            border: 2px solid #ddd; /* Light border around each grid item */
+            color: #fff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #4caf50; /* Green */
+             grid-column: 1 / 3;/*Span across both columns */
+              grid-row: 1; /*First row */
+        }
+
+        .sidebar {
+            background-color: #2196f3; /* Blue */
+              grid-column: 1/2; /*First column */
+             grid-row: 2    ; /* Second row */
+        }
+
+        .content {
+            background-color: #ff9800; /* Orange */
+              grid-column: 2/3;/*Second column */
+              grid-row: 2; /*Second row */
+        }
+
+        .footer {
+            background-color: #9c27b0; /* Purple */
+             grid-column: 1 / 3; /* Span across both columns */
+              grid-row: 3; /*   Third row */
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Define grid items that will occupy the areas -->
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Content</div>
+        <div class="footer">Footer</div>
+    </div>
+
+   
+</body>
+</html>

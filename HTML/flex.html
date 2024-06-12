@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+    <style>
+      .flex-container {
+        height: 500px;
+        background-color: aquamarine;
+        padding:10px;
+        display:flex;
+        /* justify-content: center; */
+        /* justify-content: space-around; */
+        /* justify-content: space-between; */
+        justify-content: space-evenly;
+        /* justify-content: start; */
+        /* justify-content: end; */
+        flex-wrap: wrap;
+        flex-direction: row;
+        /* flex-direction: row-reverse; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* align-items: flex-start; */
+        align-items: flex-end;
+      }
+
+      .flex-container div {
+        background-color: blueviolet;
+        color: white;
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-div "  >
+      <div class="flex-container">
+        <div>First div</div>
+        <div>second div</div>
+        <div>third div</div>
+        <div>fourth div</div>
+        <div>fifth div</div>
+        <div>sixth div</div>
+      </div>
+      
+    </div>
+  </body>
+</html>
