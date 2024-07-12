@@ -9,6 +9,7 @@ const CounterFunctional = () => {
   };
   return (
     <div>
+    
       <p className="text-red-500">Count: {count}</p>
       <button onClick={increment}>Increment</button>
       <button onClick={decrement}>Decrement</button>
