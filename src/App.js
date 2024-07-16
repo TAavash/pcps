@@ -12,6 +12,8 @@ import AboutComponent from "./components/About/aboutComponent";
 import HomeComponent from "./components/Home/homeComponent";
 import ShopComponent from "./components/Shop/shopComponent";
 import FunctionalProps from "./components/Functional_Props/FunctionalProps";
+import LifecycleComponent from "./components/react_lifecycle/lifecycleComponent";
+import ProductComponent from "./components/Product/ProductComponent";
 
 class App extends Component {
   render() {
@@ -28,11 +30,12 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <FunctionalProps/>
+          {/* <FunctionalProps/> */}
           <Routes>
             <Route path="/" element={<HomeComponent />} />
             <Route path="/about" element={<AboutComponent />} />
             <Route path="/shop" element={<ShopComponent />} />
+            <Route path='/product' element={<ProductComponent/>}/>
           </Routes>
         </div>
       </Router>

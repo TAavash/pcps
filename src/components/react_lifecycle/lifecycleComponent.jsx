@@ -23,8 +23,8 @@ class LifecycleComponent extends Component {
   render() {
     return (
       <div>
-        <h1>Count: {this.state.count}</h1>
-        <button onClick={this.incrementCount}>Increment</button>
+        <h1 className='p-2 bg-blue-950 text-white text-xl'>Count: {this.state.count}</h1>
+        <button className='p-2 bg-orange-500 text-white text-md m-2 rounded shadow' onClick={this.incrementCount}>Increment</button>
       </div>
     );
   }

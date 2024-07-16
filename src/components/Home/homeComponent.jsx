@@ -1,5 +1,5 @@
-import React from 'react'
-import CardComponent from '../CardComponent/CardComponent'
+import React from "react";
+import CardComponent from "../CardComponent/CardComponent";
 
 const HomeComponent = () => {
   const beautyProduct = [
@@ -33,8 +33,10 @@ const HomeComponent = () => {
     },
   ];
   return (
-   <CardComponent productData={beautyProduct} />
-  )
-}
+    <>
+      <CardComponent productData={beautyProduct} />
+    </>
+  );
+};
 
-export default HomeComponent
+export default HomeComponent;
