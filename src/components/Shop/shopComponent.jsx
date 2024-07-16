@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const ShopComponent = () => {
+  
   return (
-    <div>ShopComponent</div>
-  )
-}
+    <>
+      <div>ShopComponent</div>
+     
+    </>
+  );
+};
 
-export default ShopComponent
+export default ShopComponent;

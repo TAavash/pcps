@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/navbar";
 import AboutComponent from "./components/About/aboutComponent";
 import HomeComponent from "./components/Home/homeComponent";
 import ShopComponent from "./components/Shop/shopComponent";
+import FunctionalProps from "./components/Functional_Props/FunctionalProps";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
+          <FunctionalProps/>
           <Routes>
             <Route path="/" element={<HomeComponent />} />
             <Route path="/about" element={<AboutComponent />} />
