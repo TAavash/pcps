@@ -24,7 +24,7 @@ const HomeComponent = () => {
   ];
   return (
     <>
-      <CardComponent data={productData} />
+      {/* <CardComponent data={productData} /> */}
       {/* <EventFunctionProps /> */}
       <LifecycleComponent />
     </>
