@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const FormValidation = () => {
-  const [formValues, setFormValues] = useState({ name: '', email: '' });
+  const [formValues, setFormValues] = useState({ name: "", email: "" });
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -24,35 +24,52 @@ const FormValidation = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log('Form submitted successfully');
+      console.log("Form submitted successfully");
       // handle form submission
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formValues.name}
-          onChange={handleChange}
-        />
-        {errors.name && <p>{errors.name}</p>}
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={formValues.email}
-          onChange={handleChange}
-        />
-        {errors.email && <p>{errors.email}</p>}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="flex justify-center my-5">
+      <form onSubmit={handleSubmit} className="  ">
+        <div>
+          <label for="name" className="text-lg text-blue-950 font-bold">
+            Name:
+          </label>{" "}
+          <br />
+          <input
+            className="border-2 border-blue-950 p-2 rounded-lg"
+            type="text"
+            id="name"
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+          />
+          {errors.name && <p>{errors.name}</p>}
+        </div>
+        <div>
+          <label for="email" className="text-lg text-blue-950 font-bold">
+            Email:
+          </label>
+          <br />
+          <input
+            className="border-2 border-blue-950 p-2 rounded-lg"
+            type="email"
+            id="email"
+            name="email"
+            value={formValues.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p>{errors.email}</p>}
+        </div>
+        <button
+          className="border-0 rounded shadow-lg bg-blue-950 text-white p-2 px-5 m-3 "
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
