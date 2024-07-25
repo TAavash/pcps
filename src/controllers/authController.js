@@ -1,24 +1,28 @@
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
+const User = require("../models/authUserModel");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
+  // const userEmail = req.body.email;
 
   try {
     let user = await User.findOne({ email });
 
     if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
+      return res.status(400).json({ msg: "User already exists" });
     }
 
     user = new User({
-      name,
-      email,
-      password,
+      // name,
+      // email,
+      // password,
+      name: name,
+      email: email,
+      password: password,
     });
 
     await user.save();
@@ -32,7 +36,7 @@ const registerUser = async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: '1h' },
+      { expiresIn: "1h" },
       (err, token) => {
         if (err) throw err;
         res.json({ token });
@@ -40,7 +44,7 @@ const registerUser = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send({ msg: err.message });
   }
 };
 
@@ -51,13 +55,13 @@ const loginUser = async (req, res) => {
     let user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ msg: "Invalid credentials" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ msg: "Invalid credentials" });
     }
 
     const payload = {
@@ -69,7 +73,7 @@ const loginUser = async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: '1h' },
+      { expiresIn: "1h" },
       (err, token) => {
         if (err) throw err;
         res.json({ token });
@@ -77,7 +81,7 @@ const loginUser = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send("Server error");
   }
 };
 

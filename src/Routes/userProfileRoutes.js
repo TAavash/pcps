@@ -1,9 +1,9 @@
 const express=require('express');
 const userProfile = require('../controllers/userProifleController');
-const app=express();
+const router=express.Router();
+
+router.post('/userProfile',userProfile);
 
 
-app.post('/userProfile',userProfile);
 
-
-module.exports=app;
+module.exports=router;
