@@ -2,6 +2,8 @@ const User = require("../models/authUserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const UserProfile = require("../models/userProfile");
+const userProfile = require("../models/userProfile");
 
 dotenv.config();
 
@@ -27,21 +29,36 @@ const registerUser = async (req, res) => {
 
     await user.save();
 
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
+    // Create profile for the new user
+    const newProfile = new UserProfile({ user: user._id });
+    await newProfile.save();
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    // do this if you want to redirect to dashboard after registration
+    // const payload = {
+    //   user: {
+    //     id: user.id,
+    //   },
+    // };
+
+    // console.log(payload);
+
+    // jwt.sign(
+    //   payload,
+    //   process.env.JWT_SECRET,
+    //   { expiresIn: "1h" },
+    //   (err, token) => {
+    //     if (err) throw err;
+    //     res.json({ token});
+    //   }
+    // );
+
+    res
+      .status(200)
+      .json({
+        msg: "User registered successfully",
+        user: user,
+        userProfile: newProfile,
+      });
   } catch (err) {
     console.error(err.message);
     res.status(500).send({ msg: err.message });
@@ -76,7 +93,7 @@ const loginUser = async (req, res) => {
       { expiresIn: "1h" },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ msg: "user logged in successfully", token: `Bearer ${token}`, user: user });
       }
     );
   } catch (err) {
