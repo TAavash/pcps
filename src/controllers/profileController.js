@@ -1,7 +1,9 @@
 const domain = "http://localhost:5000";
+const { profileImage } = require("../middleware/uploadMiddleware");
 const UserProfiles = require("../models/userProfile");
 // Helper function to send error responses
 const sendErrorResponse = (res, error) => {
+  console.log(error);
   res.status(500).json({ msg: error.message });
 };
 
@@ -26,7 +28,11 @@ const updateUserProfile = async (req, res) => {
       return res.status(404).json({ msg: "Profile not found" });
     }
 
-    res.status(200).json({ profile });
+    res.status(200).json({
+      msg: "profile created successfully",
+      profile: profile,
+      success: true,
+    });
   } catch (error) {
     sendErrorResponse(res, error);
   }

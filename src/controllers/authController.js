@@ -3,12 +3,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const UserProfile = require("../models/userProfile");
-const userProfile = require("../models/userProfile");
 
 dotenv.config();
 
 const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,role } = req.body;
   // const userEmail = req.body.email;
 
   try {
@@ -25,6 +24,7 @@ const registerUser = async (req, res) => {
       name: name,
       email: email,
       password: password,
+      role:role
     });
 
     await user.save();
@@ -52,13 +52,11 @@ const registerUser = async (req, res) => {
     //   }
     // );
 
-    res
-      .status(200)
-      .json({
-        msg: "User registered successfully",
-        user: user,
-        userProfile: newProfile,
-      });
+    res.status(201).json({
+      msg: "User registered successfully",
+      user: user,
+      userProfile: newProfile,
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send({ msg: err.message });
@@ -93,7 +91,11 @@ const loginUser = async (req, res) => {
       { expiresIn: "1h" },
       (err, token) => {
         if (err) throw err;
-        res.json({ msg: "user logged in successfully", token: `Bearer ${token}`, user: user });
+        res.json({
+          msg: "user logged in successfully",
+          token: `Bearer ${token}`,
+          user: user,
+        });
       }
     );
   } catch (err) {
