@@ -1,5 +1,4 @@
 const domain = "http://localhost:5000";
-const { profileImage } = require("../middleware/uploadMiddleware");
 const UserProfiles = require("../models/userProfile");
 // Helper function to send error responses
 const sendErrorResponse = (res, error) => {

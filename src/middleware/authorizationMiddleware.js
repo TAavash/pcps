@@ -2,16 +2,24 @@ const User = require("../models/authUserModel");
 
 function authorizeRole(role) {
   return async (req, res, next) => {
-    // console.log(req.user);
     try {
       const user = await User.findById(req.user.id);
-      //   console.log(user);
-
+      
       if (!user) {
         return res.sendStatus(404); // User not found
       }
 
-      if (user.role !== role) {
+      const userRole = String(user.role).trim();
+      const requiredRole = String(role).trim();
+
+      // console.log('User role from DB:', user.role, 'Length:', user.role.length);
+      // console.log('Required role:', role, 'Length:', role.length);
+      // console.log('Trimmed User role:', userRole, 'Length:', userRole.length);
+      // console.log('Trimmed Required role:', requiredRole, 'Length:', requiredRole.length);
+      // console.log('Comparison result:', userRole !== requiredRole);
+
+
+      if (userRole !== requiredRole) {
         return res.sendStatus(403); // Forbidden if user does not have the required role
       }
 
@@ -23,4 +31,4 @@ function authorizeRole(role) {
   };
 }
 
-module.exports = authorizeRole;
+module.exports = { authorizeRole };
