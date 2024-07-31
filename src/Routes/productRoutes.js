@@ -30,7 +30,7 @@ router.post('/', authMiddleware, authorizeRole('admin'), productImage.single('pr
  * @param {Object} res - Express response object
  * @returns {Object} response - The response object containing the updated product
  */
-router.put('/:id', authMiddleware, authorizeRole('admin'), productImage.single('productImage'), updateProduct);
+router.patch('/:id', authMiddleware, authorizeRole('admin'), productImage.single('productImage'), updateProduct);
 
 /**
  * @description Delete a product

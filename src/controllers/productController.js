@@ -1,3 +1,4 @@
+const { productImage } = require("../middleware/uploadMiddleware");
 const Product = require("../models/productModel");
 const domain = "http://localhost:5000";
 
@@ -29,6 +30,7 @@ const createProduct = async (req, res) => {
       rating,
       numReviews,
       countInStock,
+     
     };
 
     if (req.file) {
@@ -63,7 +65,7 @@ const updateProduct = async (req, res) => {
       countInStock,
     } = req.body;
     let updateData = {
-      category,
+      category:category,
       name,
       price,
       description,
