@@ -1,0 +1,16 @@
+const e = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const mongo_uri = 'mongodb://localhost:27017/medsell';
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(mongo_uri);
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;
